@@ -1,0 +1,52 @@
+{
+  "name": "@geut/tree",
+  "version": "1.0.0",
+  "description": "Display data using a tree-like hierarchy",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "browser": "dist/umd/tree.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:clean": "rimraf dist/**",
+    "build": "npm run build:clean && bundler build ./src/index.js",
+    "build:dev": "npm run build:clean && bundler build -e development ./src/index.js",
+    "release": "npm run build",
+    "prepublish": "npm run release",
+    "storybook": "start-storybook -p 8010 -c .storybook"
+  },
+  "keywords": [
+    "ui",
+    "react",
+    "tree",
+    "material-ui"
+  ],
+  "author": "GEUT",
+  "license": "ISC",
+  "peerDependencies": {
+    "@material-ui/core": "^4.2.1",
+    "@material-ui/icons": "^4.2.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-export-default-from": "^7.5.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@geut/bundler": "^0.0.0",
+    "@material-ui/core": "^4.2.1",
+    "@material-ui/icons": "^4.2.1",
+    "@storybook/react": "^5.1.9",
+    "babel-loader": "^8.0.6",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "rimraf": "^2.6.3"
+  }
+}
