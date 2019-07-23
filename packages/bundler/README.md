@@ -15,11 +15,11 @@ Internal tool for bundling
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g bundler
+$ npm install -g @geut/bundler
 $ bundler COMMAND
 running command...
 $ bundler (-v|--version|version)
-bundler/0.0.0 darwin-x64 node-v12.3.1
+@geut/bundler/0.0.0 darwin-x64 node-v12.3.1
 $ bundler --help [COMMAND]
 USAGE
   $ bundler COMMAND
@@ -28,26 +28,30 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`bundler hello`](#bundler-hello)
+* [`bundler build [INPUT]`](#bundler-build-input)
 * [`bundler help [COMMAND]`](#bundler-help-command)
 
-## `bundler hello`
+## `bundler build [INPUT]`
 
-Describe the command here
+Build your source files into cjs, esm or umd formats.
 
 ```
 USAGE
-  $ bundler hello
+  $ bundler build [INPUT]
+
+ARGUMENTS
+  INPUT  source code entry point
 
 OPTIONS
-  -n, --name=name  name to print
+  -e, --environment=environment  [default: production] Environment
+  -f, --formats=formats          [default: umd,cjs,esm] Output formats
 
 DESCRIPTION
   ...
-  Extra documentation goes here
+  You can build for development or production.
 ```
 
-_See code: [src/commands/hello.js](https://github.com/GEUT/ui-components/blob/v0.0.0/src/commands/hello.js)_
+_See code: [src/commands/build.js](https://github.com/GEUT/ui-components/blob/v0.0.0/src/commands/build.js)_
 
 ## `bundler help [COMMAND]`
 
