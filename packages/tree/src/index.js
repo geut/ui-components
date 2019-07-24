@@ -1,11 +1,3 @@
-import React from 'react'
+import Root from './root'
 
-const Tree = props => {
-  return (
-    <div>
-      Im tree 🌲
-    </div>
-  )
-}
-
-export default Tree
+export default Root
