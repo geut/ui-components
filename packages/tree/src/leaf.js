@@ -46,14 +46,14 @@ const Leaf = props => {
   )
 }
 
-Leaf.displayName = 'Leaf'
+Leaf.displayName = 'Leaf';
 
 Leaf.defaultProps = {
   secondaryText: '',
   checkbox: false,
   onClickLeaf: () => {},
   toggleFold: () => {}
-}
+};
 
 Leaf.propTypes = {
   id: PropTypes.string.isRequired,
