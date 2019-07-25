@@ -1,6 +1,6 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
-import Tree from '../src/';
+import React from 'react'
+import { storiesOf } from '@storybook/react'
+import Tree from '../src/'
 
 const input = [
   {
@@ -19,16 +19,16 @@ const input = [
   {
     title: 'Element B'
   }
-];
+]
 
-const logLeaf = ({leaf}) => {
+const logLeaf = ({ leaf }) => {
   console.log(`You clicked ${leaf.title}`)
 }
 
 storiesOf('Tree', module)
   .add('basic', () => (
-    <Tree treeData={input}/>
+    <Tree treeData={input} />
   ))
   .add('onClick', () => (
-    <Tree treeData={input} onClickLeaf={logLeaf}/>
+    <Tree treeData={input} onClickLeaf={logLeaf} />
   ))

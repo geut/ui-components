@@ -18,7 +18,9 @@
     "build:dev": "npm run build:clean && bundler build -e development ./src/index.js",
     "release": "npm run build",
     "prepublish": "npm run release",
-    "storybook": "start-storybook -p 8010 -c .storybook"
+    "storybook": "start-storybook -p 8010 -c .storybook",
+    "lint": "standardx 'src/**/*.js' 'stories/**/*.js'",
+    "lint-fix": "standardx --fix 'src/**/*.js' 'stories/**/*.js'"
   },
   "keywords": [
     "ui",
@@ -45,8 +47,28 @@
     "@material-ui/icons": "^4.2.1",
     "@storybook/react": "^5.1.9",
     "babel-loader": "^8.0.6",
+    "babel-eslint": "^10.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "rimraf": "^2.6.3"
+    "rimraf": "^2.6.3",
+    "standardx": "^4.0.0",
+    "eslint-plugin-react-hooks": "^1.6.1"
+  },
+  "standardx": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "react-hooks"
+    ],
+    "ignore": [
+      "**/node_modules/**",
+      "packages/bundler/**"
+    ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "rules": {
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn"
+    }
   }
 }
