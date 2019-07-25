@@ -36,7 +36,7 @@ const Leaf = props => {
         <Checkbox
           edge="start"
           checked={checkedFn(id)}
-          inputProps={{ 'file item': id }}
+          inputProps={{ 'leaf item': id }}
         />
       </ListItemIcon>
           : ''
@@ -46,14 +46,14 @@ const Leaf = props => {
   )
 }
 
-Leaf.displayName = 'Leaf'
+Leaf.displayName = 'Leaf';
 
 Leaf.defaultProps = {
   secondaryText: '',
   checkbox: false,
   onClickLeaf: () => {},
   toggleFold: () => {}
-}
+};
 
 Leaf.propTypes = {
   id: PropTypes.string.isRequired,
