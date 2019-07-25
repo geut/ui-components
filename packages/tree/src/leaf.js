@@ -13,47 +13,47 @@ const Leaf = props => {
   const checkedFn = useContext('checkedFn')
   const clickHandler = ev => {
     toggleFold()
-    onClickLeaf({leaf: {id, title}})
+    onClickLeaf({ leaf: { id, title } })
   }
-  const itemIcon = ({isFolder, fold}) => {
+  const itemIcon = ({ isFolder, fold }) => {
     if (isFolder) {
       if (fold) {
-        return <FolderOpenIcon/>
+        return <FolderOpenIcon />
       } else {
-        return <FolderIcon/>
+        return <FolderIcon />
       }
     } else {
-      return <ListAltIcon/>
+      return <ListAltIcon />
     }
   }
   return (
     <ListItem button key={id} dense onClick={clickHandler}>
       <ListItemIcon>
-        {itemIcon({isFolder, fold})}
+        {itemIcon({ isFolder, fold })}
       </ListItemIcon>
-      {checkbox ?
-      <ListItemIcon>
-        <Checkbox
-          edge="start"
-          checked={checkedFn(id)}
-          inputProps={{ 'leaf item': id }}
-        />
-      </ListItemIcon>
-          : ''
+      {checkbox
+        ? <ListItemIcon>
+          <Checkbox
+            edge='start'
+            checked={checkedFn(id)}
+            inputProps={{ 'leaf item': id }}
+          />
+        </ListItemIcon>
+        : ''
       }
-      <ListItemText primary={title} secondary={secondaryText}/>
+      <ListItemText primary={title} secondary={secondaryText} />
     </ListItem>
   )
 }
 
-Leaf.displayName = 'Leaf';
+Leaf.displayName = 'Leaf'
 
 Leaf.defaultProps = {
   secondaryText: '',
   checkbox: false,
   onClickLeaf: () => {},
   toggleFold: () => {}
-};
+}
 
 Leaf.propTypes = {
   id: PropTypes.string.isRequired,
