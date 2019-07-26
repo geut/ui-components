@@ -1,20 +1,18 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Collapse from '@material-ui/core/Collapse'
 import List from '@material-ui/core/List'
+import { useTreeContext } from './contextProvider'
 import Leaf from './leaf'
 
 const Branch = props => {
-  const { children, title, id, unfoldAll, onClickLeaf, classes, isFolder } = props
-  const [fold, setFoldState] = useState(unfoldAll)
-
-  const toggleFold = () => {
-    setFoldState(!fold)
-  }
+  const { item, children, id, onClickLeaf, classes, isFolder, secondaryText } = props
+  const [{ foldStatus }] = useTreeContext()
+  const fold = foldStatus[id]
 
   return (
     <Fragment>
-      <Leaf title={title} id={id} onClickLeaf={onClickLeaf} isFolder={isFolder} fold={fold} toggleFold={toggleFold} />
+      <Leaf item={item} id={id} onClickLeaf={onClickLeaf} isFolder={isFolder} fold={fold} secondaryText={secondaryText} />
       <Collapse in={fold} timeout='auto' unmountOnExit>
         <List component='div' disablePadding className={classes.nested}>
           {children}

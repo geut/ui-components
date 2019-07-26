@@ -45,14 +45,14 @@
     "@geut/bundler": "^0.0.0",
     "@material-ui/core": "^4.2.1",
     "@material-ui/icons": "^4.2.1",
+    "@storybook/addon-actions": "^5.1.9",
     "@storybook/react": "^5.1.9",
     "babel-loader": "^8.0.6",
-    "babel-eslint": "^10.0.2",
+    "eslint-plugin-react-hooks": "^1.6.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "rimraf": "^2.6.3",
-    "standardx": "^4.0.0",
-    "eslint-plugin-react-hooks": "^1.6.1"
+    "standardx": "^4.0.0"
   },
   "standardx": {
     "parser": "babel-eslint",
