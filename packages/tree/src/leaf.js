@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import ListItemText from '@material-ui/core/ListItemText'
 import FolderIcon from '@material-ui/icons/Folder'
 import FolderOpenIcon from '@material-ui/icons/FolderOpen'
@@ -10,7 +11,7 @@ import Checkbox from '@material-ui/core/Checkbox'
 import { useTreeContext } from './contextProvider'
 
 const Leaf = props => {
-  const { item, id, isFolder, secondaryText, onClickLeaf, fold } = props
+  const { item, id, isFolder, secondaryText, onClickLeaf, fold, secondaryActions } = props
   const [{ checkStatus, checkbox }, dispatch] = useTreeContext()
   const isChecked = checkStatus[id]
   const { title } = item
@@ -25,6 +26,8 @@ const Leaf = props => {
     }
     return <ListAltIcon />
   }
+
+  // const userActions = secondaryActions.map(action => action(item))
 
   return useMemo(() => {
     const clickHandler = ev => {
@@ -63,9 +66,12 @@ const Leaf = props => {
             display: 'block'
           }}
         />
+        <ListItemSecondaryAction>
+          {secondaryActions.map(action => action(item))}
+        </ListItemSecondaryAction>
       </ListItem>
     )
-  }, [id, isFolder, fold, checkbox, isChecked, title, secondaryText, item, dispatch, onClickLeaf])
+  }, [id, isFolder, fold, checkbox, isChecked, title, secondaryText, item, secondaryActions, dispatch, onClickLeaf])
 }
 
 Leaf.displayName = 'Leaf'
@@ -73,7 +79,8 @@ Leaf.displayName = 'Leaf'
 Leaf.defaultProps = {
   checkbox: false,
   onClickLeaf: () => {},
-  secondaryText: () => ''
+  secondaryText: () => '',
+  secondaryActions: [() => {}]
 }
 
 Leaf.propTypes = {
@@ -82,7 +89,8 @@ Leaf.propTypes = {
   secondaryText: PropTypes.func,
   checkbox: PropTypes.bool,
   onClickLeaf: PropTypes.func,
-  fold: PropTypes.bool
+  fold: PropTypes.bool,
+  secondaryActions: PropTypes.arrayOf(PropTypes.func)
 }
 
 export default Leaf
