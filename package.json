@@ -2,6 +2,33 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "lerna": "^3.16.0"
+    "lerna": "^3.16.0",
+    "standardx": "^4.0.0",
+    "eslint-plugin-react-hooks": "^1.6.1",
+    "babel-eslint": "^10.0.2",
+    "lint-staged": "^9.2.1",
+    "pre-commit": "^1.2.2"
+  },
+  "scripts": {
+    "lint-staged": "lint-staged",
+    "lint": "standardx 'packages/**/*.js'",
+    "lint-fix": "standardx --fix 'packages/**/*.js'"
+  },
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "*.js": [
+      "standardx --fix",
+      "git add"
+    ]
+  },
+  "standardx": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "react-hooks"
+    ],
+    "ignore": [
+      "**/node_modules/**",
+      "packages/bundler/**"
+    ]
   }
 }
